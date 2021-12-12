@@ -1,16 +1,36 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+ <h1 :style="{ fontSize: postFontSize + 'em' }">Le titre de mon site</h1>
+ <HelloWorld 
+ v-on:enlarge-text="postFontSize += 0.1" 
+ @update-cart="updateCart"
+ msg="Welcome to Your Vue.js App"/>
 </template>
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+ 
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
-  }
+ name: 'App',
+ components: {
+ HelloWorld
+ },
+ data(){
+ return {
+ postFontSize: 1
+ }
+ },
+ methods: {
+ updateCart(toto) {
+ console.log("mettre à jour panier");
+ console.log(toto)
+ //this.cart.push(e);
+ //this.total = this.shoppingCartTotal;
+ },
+ emptyCart() {
+ console.log('vider mon panier')
+ }
+ },
 }
 </script>
 
